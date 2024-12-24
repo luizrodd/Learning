@@ -1,0 +1,35 @@
+<div class="w-full flex flex-col gap-6 pt-4">
+  <button mat-flat-button (click)="openAddDisabilityDialog()">Add</button>
+  <div class="flex flex-col">
+    <form [formGroup]="form">
+      <div *ngFor="let disability of disabilities.controls; let i = index">
+        <div formArrayName="disabilities">
+          <div [formGroupName]="i">
+            <mat-form-field class="w-full">
+              <mat-select formControlName="name">
+                <mat-option
+                  *ngFor="let disability of physicalDisabilities$"
+                  [value]="disability.name"
+                >
+                  {{ disability.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-select formControlName="typeId">
+                <mat-option
+                  *ngFor="let disabilityName of disabilitiesTypes"
+                  [value]="disabilityName.id"
+                >
+                  {{ disabilityName.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <button mat-flat-button (click)="onSubmit(i)">Remover</button>
+      </div>
+    </form>
+  </div>
+</div>

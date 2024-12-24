@@ -1,0 +1,34 @@
+<div>
+  <form [formGroup]="form">
+    <mat-form-field>
+      <mat-select (selectionChange)="onDisabilityChange($event)">
+        <mat-option
+          *ngFor="let disability of data.disabilities"
+          [value]="disability.name"
+        >
+          {{ disability.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select
+      formControlName="typeId"
+      (selectionChange)="onTypeChange($event)"
+      >
+        <mat-option
+          *ngFor="let disability of disabilitiesType"
+          [value]="disability.id"
+        >
+          {{ disability.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput formControlName="description" placeholder="Description" />
+    </mat-form-field>
+
+    <button mat-flat-button (click)="save()" color="primary" [disabled]="form.invalid">Save</button>
+  </form>
+</div>
