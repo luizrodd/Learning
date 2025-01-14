@@ -48,6 +48,8 @@ export interface Address {
     <button (click)="navigateToDate()">Data</button>
     <button (click)="navigateToDisability()">Disability</button>
     <button (click)="navigateToImages()">Images</button>
+    <button (click)="navigateToTable()">Table</button>
+
 
     <router-outlet></router-outlet>
   `,
@@ -129,6 +131,10 @@ export class AppComponent implements OnInit {
 
   navigateToImages(){
     this.route.navigate(['images']);
+  }
+
+  navigateToTable(){
+    this.route.navigate(['table-index']);
   }
 
 }

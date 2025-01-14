@@ -1,0 +1,30 @@
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="index">
+    <mat-header-cell *matHeaderCellDef> Index </mat-header-cell>
+    <mat-cell *matCellDef="let element; let i = index"> {{ i }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{ element.jobName }} </mat-cell>
+  </ng-container>
+
+
+  <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+    <mat-cell *matCellDef="let element; let i = index">
+        <input [ngModel]="element.scheduledTo" (ngModelChange)="element.scheduledTo = $event" />
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="confirm">
+    <mat-header-cell *matHeaderCellDef> Confirm </mat-header-cell>
+    <mat-cell *matCellDef="let element; let i = index">
+      <button mat-button (click)="confirmAction(element, i)">Confirm</button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
